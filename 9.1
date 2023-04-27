@@ -1,0 +1,59 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        double x, y, z, result;
+        string xRange, resultRange;
+
+        do
+        {
+            Console.Write("Введіть значення x: ");
+            x = double.Parse(Console.ReadLine());
+            if (x == 0)
+            {
+                break;
+            }
+
+            Console.Write("Введіть значення y: ");
+            y = double.Parse(Console.ReadLine());
+
+            Console.Write("Введіть значення z: ");
+            z = double.Parse(Console.ReadLine());
+
+            result = x + (Math.Pow(z, 2) / (3 + z * Math.Sin(y)));
+
+            if (x < -10)
+            {
+                xRange = "менше за -10";
+            }
+            else if (x < -1)
+            {
+                xRange = "менше за -1";
+            }
+            else if (x > 10)
+            {
+                xRange = "більше за 10";
+            }
+            else
+            {
+                xRange = "більше за 1";
+            }
+
+            if (result < 0)
+            {
+                resultRange = "негативне";
+            }
+            else
+            {
+                resultRange = "позитивне";
+            }
+
+            Console.WriteLine("Значення x потрапляє в діапазон: " + xRange);
+            Console.WriteLine("Результат обчислення: " + result);
+            Console.WriteLine("Значення результату потрапляє в діапазон: " + resultRange);
+        }
+        while (true);
+    }
+}
