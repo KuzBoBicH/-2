@@ -1,0 +1,58 @@
+using System;
+
+namespace StringManipulation
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Введення прізвища, імені та по батькові з клавіатури
+            Console.Write("Введіть прізвище: ");
+            string lastName = Console.ReadLine();
+            Console.Write("Введіть ім'я: ");
+            string firstName = Console.ReadLine();
+            Console.Write("Введіть по батькові: ");
+            string middleName = Console.ReadLine();
+
+            // Визначення довжини рядків
+            int lastNameLength = lastName.Length;
+            int firstNameLength = firstName.Length;
+            int middleNameLength = middleName.Length;
+
+            // Розрахунок кількості букв "а" в словах
+            int aCount = 0;
+            for (int i = 0; i < lastNameLength; i++)
+            {
+                if (lastName[i] == 'а' || lastName[i] == 'А')
+                {
+                    aCount++;
+                }
+            }
+            for (int i = 0; i < firstNameLength; i++)
+            {
+                if (firstName[i] == 'а' || firstName[i] == 'А')
+                {
+                    aCount++;
+                }
+            }
+            for (int i = 0; i < middleNameLength; i++)
+            {
+                if (middleName[i] == 'а' || middleName[i] == 'А')
+                {
+                    aCount++;
+                }
+            }
+
+            // Виведення результату на екран
+            Console.WriteLine("Прізвище: {0}", lastName);
+            Console.WriteLine("Ім'я: {0}", firstName);
+            Console.WriteLine("По батькові: {0}", middleName);
+            Console.WriteLine("Довжина прізвища: {0}", lastNameLength);
+            Console.WriteLine("Довжина імені: {0}", firstNameLength);
+            Console.WriteLine("Довжина по батькові: {0}", middleNameLength);
+            Console.WriteLine("Кількість букв 'а' в словах: {0}", aCount);
+            Console.WriteLine("Виконав студент спеціальності ІПЗ, групи 21008Б, Кузьміч Владислав");
+            Console.ReadLine();
+        }
+    }
+}
