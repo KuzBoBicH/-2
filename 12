@@ -1,0 +1,90 @@
+using System;
+
+namespace Polygon
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            RegularPolygon poly1 = new RegularPolygon();
+            Console.WriteLine(poly1);
+            RegularPolygon poly2 = new RegularPolygon(6, 4.0);
+            Console.WriteLine(poly2);
+
+            Console.WriteLine(poly1 == poly2);
+            Console.WriteLine(poly1 != poly2);
+
+            Console.ReadLine();
+        }
+    }
+    public class RegularPolygon
+    {
+        private int numberOfVertices; // Кількість вершин
+        private double radius; // Радіус описаного кола
+
+        // Конструктори
+        public RegularPolygon() // Конструктор без параметрів
+        {
+            numberOfVertices = 3; // Трикутник
+            radius = 1.0;
+        }
+
+        public RegularPolygon(int vertices, double rad) // Конструктор з параметрами
+        {
+            numberOfVertices = vertices;
+            radius = rad;
+        }
+
+        // Властивості
+        public int NumberOfVertices
+        {
+            get { return numberOfVertices; }
+            set { numberOfVertices = value; }
+        }
+
+        public double Radius
+        {
+            get { return radius; }
+            set { radius = value; }
+        }
+
+        // Методи
+        public double GetArea() // Площа багатокутника
+        {
+            double apothem = radius * Math.Cos(Math.PI / numberOfVertices); // Апофема багатокутника
+            double sideLength = 2 * radius * Math.Sin(Math.PI / numberOfVertices); // Довжина сторони багатокутника
+            double area = (numberOfVertices * sideLength * apothem) / 2; // Формула площі багатокутника
+            return area;
+        }
+
+        public override string ToString() // Перевизначення методу ToString()
+        {
+            return $"Кількість вершин: {numberOfVertices}\nРадіус описаного кола: {radius}\nПлоща багатокутника: {GetArea()}";
+        }
+
+        public override bool Equals(object obj) // Перевизначення методу Equals()
+        {
+            if (obj == null || GetType() != obj.GetType()) // Перевірка на null та належності до класу
+                return false;
+
+            RegularPolygon p = (RegularPolygon)obj;
+            return (numberOfVertices == p.numberOfVertices) && (radius == p.radius);
+        }
+
+        public static bool operator ==(RegularPolygon a, RegularPolygon b) // Перевизначення операції ==
+        {
+            if (ReferenceEquals(a, b)) // Перевірка на співпадіння посилань
+                return true;
+
+            if ((object)a == null || (object)b == null) // Перевірка на null
+                return false;
+
+            return a.Equals(b);
+        }
+
+        public static bool operator !=(RegularPolygon a, RegularPolygon b) // Перевизначення операції !=
+        {
+            return !(a == b);
+        }
+    }
+}
