@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp5
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void btnCalculate_Click(object sender, EventArgs e)
+        {
+            if (double.TryParse(txtCathetus.Text, out double cathetus) &&
+                double.TryParse(txtHypotenuse.Text, out double hypotenuse))
+            {
+                double secondCathetus = Math.Sqrt(hypotenuse * hypotenuse - cathetus * cathetus);
+                double area = cathetus * secondCathetus / 2;
+                lblResult.Text = $"Другий катет: {secondCathetus:F2}\r\nПлоща трикутника: {area:F2}";
+            }
+            else
+            {
+                MessageBox.Show("Будь ласка, введіть числові значення в поля Катет і Гіпотенуза.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }
+}
