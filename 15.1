@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ReverseNameProject
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void btnReverse_Click(object sender, EventArgs e)
+        {
+            // отримати ім'я та прізвище користувача
+            string surname = txtSurname.Text;
+            string name = txtName.Text;
+            // зворотній порядок імені та прізвища
+            string reversedName = ReverseString(name);
+            string reversedSurname = ReverseString(surname);
+
+            // вивести результат на форму
+            txtResult.Text = "Зворотній порядок: " + reversedName + " " + reversedSurname;
+            txtLength.Text = "Кількість символів: " + (name.Length + surname.Length);
+        }
+
+        // функція для зворотного порядку рядка
+        private string ReverseString(string str)
+        {
+            char[] arr = str.ToCharArray();
+            Array.Reverse(arr);
+            return new string(arr);
+        }
+    }
+}
+
+
+
+
+
